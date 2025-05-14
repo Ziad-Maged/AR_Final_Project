@@ -19,4 +19,19 @@ public class ScoreboardManager : MonoBehaviour
     {
         scoreText.text = $"Score: {score}";
     }
+
+    public void AddScore(int score)
+    {
+        this.score += score;
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
+    }
+
+    public void SetScore(int score)
+    {
+        this.score = score;
+    }
 }
