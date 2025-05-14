@@ -390,6 +390,7 @@ GameObject:
   - component: {fileID: 476510988}
   - component: {fileID: 476510987}
   - component: {fileID: 476510986}
+  - component: {fileID: 476510989}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -496,6 +497,22 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_RaycastPrefab: {fileID: 0}
+--- !u!114 &476510989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476510982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56243fc110581d74e8001bd29d1e5664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterModelPrefab: {fileID: 6684098324840595900, guid: 254daa45e54b9374d9e2066b26d11898, type: 3}
+  detectiveModelPrefab: {fileID: 0}
+  canvasHeaderText: {fileID: 136489699}
+  canvas: {fileID: 2102566289}
 --- !u!1 &632965946
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,12 +825,24 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Environment Mapped Successfully
+          m_StringArgument: Place the Character
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 476510985}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1709689570}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
