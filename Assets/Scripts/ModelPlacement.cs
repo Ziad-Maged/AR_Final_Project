@@ -25,6 +25,9 @@ public class ModelPlacement : MonoBehaviour
     [SerializeField]
     [Tooltip("This is the canvas.")]
     private GameObject canvas;
+    [SerializeField]
+    [Tooltip("This is the scoreboard canvas")]
+    private GameObject scoreboardCanvas;
 
 
     private void Awake()
@@ -57,17 +60,13 @@ public class ModelPlacement : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Began)
             {
-                if (detectiveModelPrefab == null)
-                {
-                    canvasHeaderText.text = "Detective model not found... Yet!";
-                    return;
-                }
                 if (arRaycastManager.Raycast(touch.position, hits, TrackableType.PlaneWithinPolygon))
                 {
                     Pose hitPose = hits[0].pose;
                     Instantiate(detectiveModelPrefab, hitPose.position, hitPose.rotation);
                     isDetectiveModelPlaced = true;
                     canvas.SetActive(false); // Hide the canvas after placing the detective model
+                    scoreboardCanvas.SetActive(true); // Show the scoreboard canvas
                     enabled = false; // Disable this script to prevent further placements
                 }
             }
