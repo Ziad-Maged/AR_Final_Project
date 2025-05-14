@@ -14,7 +14,7 @@ public class ModelPlacement : MonoBehaviour
     [Tooltip("This is the prefab of the detective model we want to place in the scene.")]
     private GameObject detectiveModelPrefab;
     private ARRaycastManager arRaycastManager;
-    private List<ARRaycastHit> hits = new List<ARRaycastHit>();
+    private readonly List<ARRaycastHit> hits = new();
 
     private bool isDetectiveModelPlaced = false;
     private bool isCharacterModelPlaced = false;
