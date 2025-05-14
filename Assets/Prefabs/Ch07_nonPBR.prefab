@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ch07_nonPBR
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 19062464eaa7c624281eeef7b0a7850f, type: 3}
+      propertyPath: m_TagString
+      value: Character
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 19062464eaa7c624281eeef7b0a7850f, type: 3}
       propertyPath: m_Controller
       value: 
