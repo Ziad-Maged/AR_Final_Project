@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
@@ -15,6 +16,9 @@ public class ModelPlacement : MonoBehaviour
     private GameObject detectiveModelPrefab;
     private ARRaycastManager arRaycastManager;
     private readonly List<ARRaycastHit> hits = new();
+    [SerializeField]
+    [Tooltip("This defines whether or not the models are facing the player.")]
+    private bool facePlayerOnPlacement = true;
 
     private bool isDetectiveModelPlaced = false;
     private bool isCharacterModelPlaced = false;
@@ -47,7 +51,11 @@ public class ModelPlacement : MonoBehaviour
                 if (arRaycastManager.Raycast(touch.position, hits, TrackableType.PlaneWithinPolygon))
                 {
                     Pose hitPose = hits[0].pose;
-                    Instantiate(characterModelPrefab, hitPose.position, hitPose.rotation);
+                    Quaternion rotation = facePlayerOnPlacement
+                        ? Quaternion.LookRotation(Camera.main.transform.position - hitPose.position)
+                        : Quaternion.identity;
+                    rotation.y = 0;
+                    Instantiate(characterModelPrefab, hitPose.position, rotation);
                     isCharacterModelPlaced = true;
                     //Change the canvas header text to "Detective"
                     canvasHeaderText.text = "Place the Detective";
@@ -63,7 +71,11 @@ public class ModelPlacement : MonoBehaviour
                 if (arRaycastManager.Raycast(touch.position, hits, TrackableType.PlaneWithinPolygon))
                 {
                     Pose hitPose = hits[0].pose;
-                    Instantiate(detectiveModelPrefab, hitPose.position, hitPose.rotation);
+                    Quaternion rotation = facePlayerOnPlacement
+                        ? Quaternion.LookRotation(Camera.main.transform.position - hitPose.position)
+                        : Quaternion.identity;
+                    rotation.y = 1;
+                    Instantiate(detectiveModelPrefab, hitPose.position, rotation);
                     isDetectiveModelPlaced = true;
                     canvas.SetActive(false); // Hide the canvas after placing the detective model
                     scoreboardCanvas.SetActive(true); // Show the scoreboard canvas
