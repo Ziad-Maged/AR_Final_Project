@@ -52,9 +52,9 @@ public class ModelPlacement : MonoBehaviour
                 {
                     Pose hitPose = hits[0].pose;
                     Quaternion rotation = facePlayerOnPlacement
-                        ? Quaternion.LookRotation(Camera.main.transform.position - hitPose.position)
+                        ? Quaternion.LookRotation(Camera.main.transform.position - hitPose.position) * Quaternion.Euler(0, 180f, 0)
                         : Quaternion.identity;
-                    rotation.y = 0;
+                    //rotation.y = 0;
                     Instantiate(characterModelPrefab, hitPose.position, rotation);
                     isCharacterModelPlaced = true;
                     //Change the canvas header text to "Detective"
@@ -72,9 +72,9 @@ public class ModelPlacement : MonoBehaviour
                 {
                     Pose hitPose = hits[0].pose;
                     Quaternion rotation = facePlayerOnPlacement
-                        ? Quaternion.LookRotation(Camera.main.transform.position - hitPose.position)
+                        ? Quaternion.LookRotation(Camera.main.transform.position - hitPose.position) * Quaternion.Euler(0, 180f, 0)
                         : Quaternion.identity;
-                    rotation.y = 1;
+                    //rotation.y = 1;
                     Instantiate(detectiveModelPrefab, hitPose.position, rotation);
                     isDetectiveModelPlaced = true;
                     canvas.SetActive(false); // Hide the canvas after placing the detective model
