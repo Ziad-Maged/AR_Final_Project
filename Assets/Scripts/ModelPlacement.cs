@@ -33,6 +33,10 @@ public class ModelPlacement : MonoBehaviour
     [Tooltip("This is the scoreboard canvas")]
     private GameObject scoreboardCanvas;
 
+    [SerializeField]
+    [Tooltip("This is the level manager that will start the game.")]
+    LevelManager levelManager;
+
 
     private void Awake()
     {
@@ -81,6 +85,7 @@ public class ModelPlacement : MonoBehaviour
                     isDetectiveModelPlaced = true;
                     canvas.SetActive(false); // Hide the canvas after placing the detective model
                     scoreboardCanvas.SetActive(true); // Show the scoreboard canvas
+                    levelManager.PlayTheStartingClip(); // Play the starting audio clip
                     enabled = false; // Disable this script to prevent further placements
                 }
             }

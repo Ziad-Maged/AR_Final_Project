@@ -30,7 +30,7 @@ public class ScoreboardManager : MonoBehaviour
     void Update()
     {
         scoreText.text = $"Score: {score}";
-        // Hints.text = $"Hints Used: {currentHints}/{maxHints}";
+        // hints.text = $"Hints Used: {currentHints}/{maxHints}";
         // taskSkipsText.text = $"Task Skips Used: {currentTaskSkipsUsed}/{maxNumberOfTaskSkips}";
     }
 
