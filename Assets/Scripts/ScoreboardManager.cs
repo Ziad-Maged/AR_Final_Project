@@ -19,6 +19,13 @@ public class ScoreboardManager : MonoBehaviour
     [SerializeField]
     [Tooltip("This is the text to display the score.")]
     private TMP_Text scoreText;
+    [SerializeField]
+    [Tooltip("This is the text that will indicate the number of hints used and the number of maximum hints that the detective can provide.")]
+    private TMP_Text hints;
+    [SerializeField]
+    [Tooltip("This is the text that will indicate the number of task skips used and the number of maximum task skips that the character can provide.")]
+    private TMP_Text taskSkipsText;
+
     void Start()
     {
         score = 0;
@@ -30,8 +37,8 @@ public class ScoreboardManager : MonoBehaviour
     void Update()
     {
         scoreText.text = $"Score: {score}";
-        // hints.text = $"Hints Used: {currentHints}/{maxHints}";
-        // taskSkipsText.text = $"Task Skips Used: {currentTaskSkipsUsed}/{maxNumberOfTaskSkips}";
+        hints.text = $"Hints: {currentHints}/{maxHints}";
+        taskSkipsText.text = $"Task Skips: {currentTaskSkipsUsed}/{maxNumberOfTaskSkips}";
     }
 
     public void AddScore(int score)
