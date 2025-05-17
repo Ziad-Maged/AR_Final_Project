@@ -1992,6 +1992,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63073cd4a7b00443ac92bd209c62f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planeManager: {fileID: 476510985}
+  diaryEntryPrefab: {fileID: 628307405035192759, guid: c9056ebae4cdc2042a8496052ba75832, type: 3}
   titleText: {fileID: 1555645688}
   startAudioClip: {fileID: 8300000, guid: a1faedd2abe653742b78d4494b412db3, type: 3}
 --- !u!82 &2066402599

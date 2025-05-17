@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Character
   - Detective
+  - DiaryEntry
   layers:
   - Default
   - TransparentFX
