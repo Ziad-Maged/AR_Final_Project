@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
         titleText.text = $"Chapter {CURRENT_LEVEL}.{currentPart}";
     }
 
-    public void PlayTheStartingClip()
+    public void StartPartOne()
     {
         audioSource.resource = startAudioClip;
         audioSource.PlayOneShot(startAudioClip);

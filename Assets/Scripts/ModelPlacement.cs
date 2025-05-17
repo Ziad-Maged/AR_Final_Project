@@ -85,7 +85,7 @@ public class ModelPlacement : MonoBehaviour
                     isDetectiveModelPlaced = true;
                     canvas.SetActive(false); // Hide the canvas after placing the detective model
                     scoreboardCanvas.SetActive(true); // Show the scoreboard canvas
-                    levelManager.PlayTheStartingClip(); // Play the starting audio clip
+                    levelManager.StartPartOne(); // Play the starting audio clip
                     enabled = false; // Disable this script to prevent further placements
                 }
             }
