@@ -30,6 +30,8 @@ public class LevelManager : MonoBehaviour
     [Tooltip("This is the audio clip that plays when the level starts.")]
     AudioClip startAudioClip;
 
+    bool locked = false;
+
     void Start()
     {
         currentPart = 1;
@@ -39,7 +41,8 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        titleText.text = $"Chapter {CURRENT_LEVEL}.{currentPart}";
+        if(!locked)
+            titleText.text = $"Chapter {CURRENT_LEVEL}.{currentPart}";
     }
 
     public void StartPartOne()
@@ -51,22 +54,33 @@ public class LevelManager : MonoBehaviour
 
     public void CreateDiaryEntriesInScene()
     {
-        var planes = planeManager.trackables.ConvertTo<List<ARPlane>>();
-        if (planes.Count == 0)
-            return;
-        var chosenPlane = planes[Random.Range(0, planes.Count)];
+        try
+        {
+            List<ARPlane> planes = new();
+            foreach(ARPlane plane in planeManager.trackables)
+            {
+                planes.Add(plane);
+            }
+            if (planes.Count == 0)
+                return;
+            var chosenPlane = planes[Random.Range(0, planes.Count)];
 
-        //NativeArray<Vector2> boundary2D = chosenPlane.boundary;
-        //List<Vector3> boundaryWorld = new(boundary2D.Length);
-        //foreach(var v in boundary2D)
-        //{
-        //    Vector3 localPoint = new(v.x, 0f, v.y);
-        //    Vector3 worldPoint = chosenPlane.transform.TransformPoint(localPoint);
-        //    boundaryWorld.Add(worldPoint);
-        //}
-        Vector2 sample2D = RandomPointInPlane(chosenPlane);
-        Vector3 worldPos = chosenPlane.transform.TransformPoint(new Vector3(sample2D.x, 0f, sample2D.y));
-        Instantiate(diaryEntryPrefab, worldPos, Quaternion.identity);
+            //NativeArray<Vector2> boundary2D = chosenPlane.boundary;
+            //List<Vector3> boundaryWorld = new(boundary2D.Length);
+            //foreach(var v in boundary2D)
+            //{
+            //    Vector3 localPoint = new(v.x, 0f, v.y);
+            //    Vector3 worldPoint = chosenPlane.transform.TransformPoint(localPoint);
+            //    boundaryWorld.Add(worldPoint);
+            //}
+            Vector2 sample2D = RandomPointInPlane(chosenPlane);
+            Vector3 worldPos = chosenPlane.transform.TransformPoint(new Vector3(sample2D.x, 0f, sample2D.y));
+            Instantiate(diaryEntryPrefab, worldPos, Quaternion.identity);
+        }catch (System.Exception e)
+        {
+            locked = true;
+            titleText.text = $"Error creating diary entries: {e.Message}";
+        }
     }
 
     private Vector2 RandomPointInPlane(ARPlane plane)
