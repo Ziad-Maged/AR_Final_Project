@@ -2263,6 +2263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91310f8258f8deb4496f855cd9d3408c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightPrefab: {fileID: 2556275035205961787, guid: 47f899d243f04624cae6444c70a76e34, type: 3}
 --- !u!1 &2102566289
 GameObject:
   m_ObjectHideFlags: 0

@@ -64,6 +64,11 @@ public class ScoreboardManager : MonoBehaviour
         }
     }
 
+    public int GetCurrentHintsUsed()
+    {
+        return currentHints;
+    }
+
     public void DecrementTaskSkips()
     {
         if (currentTaskSkipsUsed > 0)
