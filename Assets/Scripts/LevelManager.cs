@@ -66,5 +66,10 @@ public class LevelManager : MonoBehaviour
         audioSource.PlayOneShot(audioClips[currentPart - 1]);
         transitioning = true;
         currentPart++;
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("DiaryEntry");
+        foreach (GameObject gameObject in gameObjects)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -118,7 +118,7 @@ public class TaskManager : MonoBehaviour
                     var chosenPlane = planez[Random.Range(0, planez.Count)];
                     Vector2 sample2D = RandomPointInPlane(chosenPlane);
                     Vector3 worldPos = chosenPlane.transform.TransformPoint(new Vector3(sample2D.x, 0f, sample2D.y));
-                    Instantiate(diaryEntryPrefab, worldPos, diaryEntryPrefab.transform.rotation);
+                    Instantiate(markerPrefab, worldPos, diaryEntryPrefab.transform.rotation);
                 }
                 break;
         }
