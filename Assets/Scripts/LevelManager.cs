@@ -21,6 +21,10 @@ public class LevelManager : MonoBehaviour
     private int currentLevel;
     private int currentPart;
 
+    [SerializeField]
+    [Tooltip("This is the text that displays the skip narration button.")]
+    private GameObject skipNarrationText;
+
     AudioSource audioSource;
 
     [SerializeField]
@@ -52,6 +56,15 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public void SkipNarration()
+    {
+        if(audioSource.isPlaying && transitioning)
+        {
+            audioSource.Stop();
+            skipNarrationText.SetActive(false);
+        }
+    }
+
     public void StartPart()
     {
         audioSource.PlayOneShot(audioClips[currentPart - 1]);
@@ -64,9 +77,15 @@ public class LevelManager : MonoBehaviour
         touchDetector.enabled = false;
         currentPart++;
         audioSource.PlayOneShot(audioClips[currentPart - 1]);
+        skipNarrationText.SetActive(true);
         transitioning = true;
         currentPart++;
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("DiaryEntry");
+        foreach (GameObject gameObject in gameObjects)
+        {
+            Destroy(gameObject);
+        }
+        gameObjects = GameObject.FindGameObjectsWithTag("Marker");
         foreach (GameObject gameObject in gameObjects)
         {
             Destroy(gameObject);
