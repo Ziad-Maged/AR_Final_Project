@@ -1,0 +1,2 @@
+F:\personal\Uni\10th\dmet-1075\comprehensive-assignments\ar\AR_Final_Project\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+F:\personal\Uni\10th\dmet-1075\comprehensive-assignments\ar\AR_Final_Project\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

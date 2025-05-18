@@ -1,0 +1,5 @@
+F:/personal/Uni/10th/dmet-1075/comprehensive-assignments/ar/AR_Final_Project/.utmp/RelWithDebInfo/335y1f2q/arm64-v8a/CMakeFiles/edit_cache.dir
+F:/personal/Uni/10th/dmet-1075/comprehensive-assignments/ar/AR_Final_Project/.utmp/RelWithDebInfo/335y1f2q/arm64-v8a/CMakeFiles/rebuild_cache.dir
+F:/personal/Uni/10th/dmet-1075/comprehensive-assignments/ar/AR_Final_Project/.utmp/RelWithDebInfo/335y1f2q/arm64-v8a/GameActivity/CMakeFiles/game.dir
+F:/personal/Uni/10th/dmet-1075/comprehensive-assignments/ar/AR_Final_Project/.utmp/RelWithDebInfo/335y1f2q/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+F:/personal/Uni/10th/dmet-1075/comprehensive-assignments/ar/AR_Final_Project/.utmp/RelWithDebInfo/335y1f2q/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
