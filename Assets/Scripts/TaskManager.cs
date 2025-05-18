@@ -29,6 +29,7 @@ public class TaskManager : MonoBehaviour
     private bool taskActive;
 
     private LevelManager levelManager;
+    private ScoreboardManager scoreboardManager;
 
 
 
@@ -37,6 +38,7 @@ public class TaskManager : MonoBehaviour
         currentlyCollected = 0;
         taskActive = false;
         levelManager = GetComponent<LevelManager>();
+        scoreboardManager = GetComponent<ScoreboardManager>();
     }
 
     // Update is called once per frame
@@ -66,6 +68,17 @@ public class TaskManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SkipTask()
+    {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("DiaryEntry");
+        foreach (GameObject obj in objects)
+        {
+            Destroy(obj);
+        }
+        currentlyCollected = maxNumberOfObjects[currentTaskIndex];
+        scoreboardManager.DecrementTaskSkips();
     }
 
     public void StartTask(ARPlaneManager planeManager)

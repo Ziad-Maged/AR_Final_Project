@@ -71,4 +71,14 @@ public class ScoreboardManager : MonoBehaviour
             currentTaskSkipsUsed--;
         }
     }
+
+    public int GetCurrentNumberOfTaskSkipsUsed()
+    {
+        return currentTaskSkipsUsed;
+    }
+
+    public int GetMaxNUmberOfTaskSkips()
+    {
+        return maxNumberOfTaskSkips;
+    }
 }

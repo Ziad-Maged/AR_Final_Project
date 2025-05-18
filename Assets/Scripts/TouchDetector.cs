@@ -3,10 +3,12 @@ using UnityEngine;
 public class TouchDetector : MonoBehaviour
 {
     private TaskManager taskManager;
+    private ScoreboardManager scoreboardManager;
 
     private void Start()
     {
         taskManager = GetComponent<TaskManager>();
+        scoreboardManager = GetComponent<ScoreboardManager>();
     }
 
     // Update is called once per frame
@@ -32,6 +34,10 @@ public class TouchDetector : MonoBehaviour
                     {
                         Destroy(hit.collider.gameObject);
                         taskManager.IncrementCurrentlyCollected();
+                        scoreboardManager.AddScore(10);
+                    }else if (hit.collider != null && hit.collider.CompareTag("Character") && scoreboardManager.GetCurrentNumberOfTaskSkipsUsed() >= 0)
+                    {
+                        taskManager.SkipTask();
                     }
                 }
             }
