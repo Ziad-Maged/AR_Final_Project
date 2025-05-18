@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -21,6 +22,10 @@ public class TaskManager : MonoBehaviour
 
     private int currentlyCollected;
 
+    [SerializeField]
+    [Tooltip("This is the text that displays the collected items or placed items")]
+    private GameObject collectedText;
+
 
 
     void Start()
@@ -31,7 +36,18 @@ public class TaskManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (collectedText.activeSelf)
+        {
+            switch (typesOfTasks[currentTaskIndex])
+            {
+                case TaskType.Collection:
+                    collectedText.GetComponent<TMP_Text>().text = $"Collected: {currentlyCollected}/{maxNumberOfObjects[currentTaskIndex]}";
+                    break;
+                case TaskType.Interaction:
+                    collectedText.GetComponent<TMP_Text>().text = $"Placed: {currentlyCollected}/{maxNumberOfObjects[currentTaskIndex]}";
+                    break;
+            }
+        }
     }
 
     public void StartTask(ARPlaneManager planeManager)
@@ -52,13 +68,14 @@ public class TaskManager : MonoBehaviour
                     var chosenPlane = planes[Random.Range(0, planes.Count)];
                     Vector2 sample2D = RandomPointInPlane(chosenPlane);
                     Vector3 worldPos = chosenPlane.transform.TransformPoint(new Vector3(sample2D.x, 0f, sample2D.y));
-                    Instantiate(diaryEntryPrefab, worldPos, Quaternion.identity);
+                    Instantiate(diaryEntryPrefab, worldPos, diaryEntryPrefab.transform.rotation);
                 }
                 break;
             case TaskType.Interaction:
                 // Start interaction task
                 break;
         }
+        collectedText.SetActive(true);
     }
 
     private Vector2 RandomPointInPlane(ARPlane plane)
