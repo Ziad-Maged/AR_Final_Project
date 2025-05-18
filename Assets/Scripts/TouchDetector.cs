@@ -8,6 +8,9 @@ public class TouchDetector : MonoBehaviour
     [SerializeField]
     [Tooltip("This is the light prefab that will be displayed on top of the diaries and markers")]
     private GameObject lightPrefab;
+    [SerializeField]
+    [Tooltip("This is the prefab of the diary entries that will be instantiated once we tap the marker.")]
+    private GameObject diaryEntryPrefab;
 
     private void Start()
     {
@@ -36,6 +39,13 @@ public class TouchDetector : MonoBehaviour
                     // Check if the hit object has the desired tag
                     if (hit.collider != null && hit.collider.CompareTag("DiaryEntry"))
                     {
+                        Destroy(hit.collider.gameObject);
+                        taskManager.IncrementCurrentlyCollected();
+                        scoreboardManager.AddScore(10);
+                    }else if (hit.collider != null && hit.collider.CompareTag("Marker"))
+                    {
+                        // Instantiate the diary entry prefab at the marker's position
+                        GameObject diaryEntry = Instantiate(diaryEntryPrefab, hit.collider.transform.position, diaryEntryPrefab.transform.rotation);
                         Destroy(hit.collider.gameObject);
                         taskManager.IncrementCurrentlyCollected();
                         scoreboardManager.AddScore(10);

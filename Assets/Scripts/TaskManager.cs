@@ -19,6 +19,9 @@ public class TaskManager : MonoBehaviour
     [SerializeField]
     [Tooltip("This will be the prefab of the diary entries that will be scattered accross the scene.")]
     private GameObject diaryEntryPrefab;
+    [SerializeField]
+    [Tooltip("This is the prefab of the markers used to place the diary entries.")]
+    private GameObject markerPrefab;
 
     private int currentlyCollected;
 
@@ -103,7 +106,20 @@ public class TaskManager : MonoBehaviour
                 }
                 break;
             case TaskType.Interaction:
-                // Start interaction task
+                List<ARPlane> planez = new();
+                foreach (ARPlane plane in planeManager.trackables)
+                {
+                    planez.Add(plane);
+                }
+                if (planez.Count == 0)
+                    return;
+                for (int i = 0; i < maxNumberOfObjects[currentTaskIndex]; i++)
+                {
+                    var chosenPlane = planez[Random.Range(0, planez.Count)];
+                    Vector2 sample2D = RandomPointInPlane(chosenPlane);
+                    Vector3 worldPos = chosenPlane.transform.TransformPoint(new Vector3(sample2D.x, 0f, sample2D.y));
+                    Instantiate(diaryEntryPrefab, worldPos, diaryEntryPrefab.transform.rotation);
+                }
                 break;
         }
         collectedText.SetActive(true);

@@ -2138,6 +2138,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a1faedd2abe653742b78d4494b412db3, type: 3}
   - {fileID: 8300000, guid: 7bf56f933387f364cb9887efa6a9f006, type: 3}
   - {fileID: 8300000, guid: 6d5541174c9501644a5b8bf321c99af8, type: 3}
+  - {fileID: 8300000, guid: 3187c529728081740ac2e784fc83e851, type: 3}
+  - {fileID: 8300000, guid: 109e269a2e9004147bb293f373f123f3, type: 3}
+  - {fileID: 8300000, guid: d3cfb9821dbfa0148b56e71afee44b5a, type: 3}
+  - {fileID: 8300000, guid: 6d5541174c9501644a5b8bf321c99af8, type: 3}
+  - {fileID: 8300000, guid: c417c4eddc5f88445bf9b32b1430473d, type: 3}
+  - {fileID: 8300000, guid: 109e269a2e9004147bb293f373f123f3, type: 3}
 --- !u!82 &2066402599
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2247,9 +2253,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b760981d1469c141b902a7ec601e736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typesOfTasks: 0000000001000000
-  maxNumberOfObjects: 0300000003000000
+  typesOfTasks: 0000000001000000000000000100000000000000
+  maxNumberOfObjects: 0300000003000000050000000500000007000000
   diaryEntryPrefab: {fileID: 960979701560641175, guid: 544b90903c035f748b2e0edfb19bdea5, type: 3}
+  markerPrefab: {fileID: 8446348806518833406, guid: d50f34d8f5353ee4281912641b3bf088, type: 3}
   collectedText: {fileID: 491612419}
 --- !u!114 &2066402601
 MonoBehaviour:
@@ -2264,6 +2271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightPrefab: {fileID: 2556275035205961787, guid: 47f899d243f04624cae6444c70a76e34, type: 3}
+  diaryEntryPrefab: {fileID: 960979701560641175, guid: 544b90903c035f748b2e0edfb19bdea5, type: 3}
 --- !u!1 &2102566289
 GameObject:
   m_ObjectHideFlags: 0
