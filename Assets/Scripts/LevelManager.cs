@@ -54,6 +54,7 @@ public class LevelManager : MonoBehaviour
 
     public void StartPart()
     {
+        currentPart++;
         audioSource.PlayOneShot(audioClips[currentPart - 1]);
         taskManager.StartTask(planeManager);
         touchDetector.enabled = true;
