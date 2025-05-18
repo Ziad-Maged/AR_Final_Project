@@ -30,6 +30,8 @@ public class LevelManager : MonoBehaviour
     private TaskManager taskManager;
     private TouchDetector touchDetector;
 
+    private bool transitioning = false;
+
     void Start()
     {
         currentPart = 1;
@@ -42,6 +44,12 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         titleText.text = $"Chapter {currentLevel}.{currentPart}";
+
+        if(!audioSource.isPlaying && transitioning)
+        {
+            transitioning = false;
+            StartPart();
+        }
     }
 
     public void StartPart()
@@ -49,5 +57,13 @@ public class LevelManager : MonoBehaviour
         audioSource.PlayOneShot(audioClips[currentPart - 1]);
         taskManager.StartTask(planeManager);
         touchDetector.enabled = true;
+    }
+
+    public void EndPart()
+    {
+        touchDetector.enabled = false;
+        currentPart++;
+        audioSource.PlayOneShot(audioClips[currentPart - 1]);
+        transitioning = true;
     }
 }

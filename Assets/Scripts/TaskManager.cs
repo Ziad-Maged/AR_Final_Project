@@ -26,11 +26,17 @@ public class TaskManager : MonoBehaviour
     [Tooltip("This is the text that displays the collected items or placed items")]
     private GameObject collectedText;
 
+    private bool taskActive;
+
+    private LevelManager levelManager;
+
 
 
     void Start()
     {
         currentlyCollected = 0;
+        taskActive = false;
+        levelManager = GetComponent<LevelManager>();
     }
 
     // Update is called once per frame
@@ -46,6 +52,18 @@ public class TaskManager : MonoBehaviour
                 case TaskType.Interaction:
                     collectedText.GetComponent<TMP_Text>().text = $"Placed: {currentlyCollected}/{maxNumberOfObjects[currentTaskIndex]}";
                     break;
+            }
+            if(currentlyCollected >= maxNumberOfObjects[currentTaskIndex])
+            {
+                taskActive = false;
+                collectedText.SetActive(false);
+                currentlyCollected = 0;
+                currentTaskIndex++;
+                levelManager.EndPart();
+                if (currentTaskIndex >= typesOfTasks.Count)
+                {
+                    currentTaskIndex = 0; // Reset to the first task
+                }
             }
         }
     }
@@ -76,6 +94,7 @@ public class TaskManager : MonoBehaviour
                 break;
         }
         collectedText.SetActive(true);
+        taskActive = true;
     }
 
     private Vector2 RandomPointInPlane(ARPlane plane)
