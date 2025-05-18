@@ -1940,6 +1940,8 @@ GameObject:
   - component: {fileID: 2066402596}
   - component: {fileID: 2066402597}
   - component: {fileID: 2066402598}
+  - component: {fileID: 2066402600}
+  - component: {fileID: 2066402601}
   - component: {fileID: 2066402599}
   m_Layer: 0
   m_Name: GameManager
@@ -1993,9 +1995,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planeManager: {fileID: 476510985}
-  diaryEntryPrefab: {fileID: 628307405035192759, guid: c9056ebae4cdc2042a8496052ba75832, type: 3}
   titleText: {fileID: 1555645688}
-  startAudioClip: {fileID: 8300000, guid: a1faedd2abe653742b78d4494b412db3, type: 3}
+  currentLevel: 1
+  audioClips:
+  - {fileID: 8300000, guid: a1faedd2abe653742b78d4494b412db3, type: 3}
 --- !u!82 &2066402599
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2093,6 +2096,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2066402600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066402595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b760981d1469c141b902a7ec601e736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typesOfTasks: 00000000
+  maxNumberOfObjects: 03000000
+  diaryEntryPrefab: {fileID: 628307405035192759, guid: c9056ebae4cdc2042a8496052ba75832, type: 3}
+--- !u!114 &2066402601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066402595}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91310f8258f8deb4496f855cd9d3408c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2102566289
 GameObject:
   m_ObjectHideFlags: 0
