@@ -53,7 +53,6 @@ public class TouchDetector : MonoBehaviour
                         GameObject light = Instantiate(lightPrefab, selectedObject.transform.position, Quaternion.identity);
                         light.transform.SetParent(selectedObject.transform);
                         light.transform.localPosition = new Vector3(0, 0.5f, 0);
-                        light.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                         Destroy(light, 2f);
                         scoreboardManager.DecrementHintsUsed();
                     }
