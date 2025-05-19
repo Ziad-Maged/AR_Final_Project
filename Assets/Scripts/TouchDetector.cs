@@ -49,10 +49,10 @@ public class TouchDetector : MonoBehaviour
                         Destroy(hit.collider.gameObject);
                         taskManager.IncrementCurrentlyCollected();
                         scoreboardManager.AddScore(10);
-                    }else if (hit.collider != null && hit.collider.CompareTag("Character") && scoreboardManager.GetCurrentNumberOfTaskSkipsUsed() >= 0)
+                    }else if (hit.collider != null && hit.collider.CompareTag("Character") && scoreboardManager.GetCurrentNumberOfTaskSkipsUsed() > 0)
                     {
                         taskManager.SkipTask();
-                    }else if (hit.collider != null && hit.collider.CompareTag("Detective") && scoreboardManager.GetCurrentHintsUsed() >= 0)
+                    }else if (hit.collider != null && hit.collider.CompareTag("Detective") && scoreboardManager.GetCurrentHintsUsed() > 0)
                     {
                         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("DiaryEntry");
                         if(gameObjects.Length == 0)
@@ -61,9 +61,7 @@ public class TouchDetector : MonoBehaviour
                         }
                         GameObject selectedObject = gameObjects[Random.Range(0, gameObjects.Length)];
                         GameObject light = Instantiate(lightPrefab, selectedObject.transform.position, Quaternion.identity);
-                        light.transform.SetParent(selectedObject.transform);
-                        light.transform.localPosition = new Vector3(0, 0.5f, 0);
-                        Destroy(light, 2f);
+                        Destroy(light, 5.0f);
                         scoreboardManager.DecrementHintsUsed();
                     }
                 }

@@ -80,6 +80,11 @@ public class TaskManager : MonoBehaviour
         {
             Destroy(obj);
         }
+        objects = GameObject.FindGameObjectsWithTag("Marker");
+        foreach (GameObject obj in objects)
+        {
+            Destroy(obj);
+        }
         currentlyCollected = maxNumberOfObjects[currentTaskIndex];
         scoreboardManager.DecrementTaskSkips();
     }
