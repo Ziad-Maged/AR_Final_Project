@@ -4,6 +4,7 @@ using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal.Internal;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARFoundation;
 
 public class LevelManager : MonoBehaviour
@@ -20,6 +21,7 @@ public class LevelManager : MonoBehaviour
     [Tooltip("This is the text that displays the current level.")]
     private int currentLevel;
     private int currentPart;
+    private int part;
 
     [SerializeField]
     [Tooltip("This is the text that displays the skip narration button.")]
@@ -39,6 +41,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         currentPart = 1;
+        part = 0;
         audioSource = GetComponent<AudioSource>();
         taskManager = GetComponent<TaskManager>();
         touchDetector = GetComponent<TouchDetector>();
@@ -47,7 +50,7 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        titleText.text = $"Chapter {currentLevel}.{currentPart}";
+        titleText.text = $"Chapter {currentLevel}.{part}";
 
         if(!audioSource.isPlaying && transitioning)
         {
@@ -67,6 +70,13 @@ public class LevelManager : MonoBehaviour
 
     public void StartPart()
     {
+        part++;
+        if (part > 4 && currentLevel < 2)
+        {
+            touchDetector.enabled = true;
+            SceneManager.LoadScene("Level2");
+            return;
+        }
         audioSource.PlayOneShot(audioClips[currentPart - 1]);
         taskManager.StartTask(planeManager);
         touchDetector.enabled = true;
